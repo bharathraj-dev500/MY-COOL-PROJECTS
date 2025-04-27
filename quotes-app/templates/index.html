@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote</title>
+    <script>
+        function getNewQuote() {
+            fetch('/new_quote')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').textContent = data.quote;
+                })
+                .catch(error => console.log('Error:', error));
+        }
+    </script>
+</head>
+<body style="text-align: center; margin-top: 50px;">
+    <h1>Your Random Quote</h1>
+    <h2 id="quote">{{ quote }}</h2>
+    <button onclick="getNewQuote()">New Quote</button>
+</body>
+</html>
